@@ -1,4 +1,5 @@
 
+// This class is made in Tutorial 17
 public class Product{
 
     private String name;

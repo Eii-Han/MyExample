@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 /*  In this program, a few of features were added to allow user to insert / delete the columnn of table
     and update the information of product.(Tutorial 19) 4/27/2018
+    Done. (Tutorial 20) 4/28/2018
+    TO-DO: Using design pattern to make things clean.......
 */
 
 public class TableViewT18 extends Application{
@@ -58,7 +60,9 @@ public class TableViewT18 extends Application{
 
         //Button - add / delete Column
         Button addButton = new Button("Add");
+        addButton.setOnAction(e->addButtonClicked());
         Button deleteButton = new Button("Delete");
+        deleteButton.setOnAction(e->deleteButtonClicked());
 
         //HBox layout to store Button
         HBox hBox = new HBox();
@@ -82,6 +86,32 @@ public class TableViewT18 extends Application{
     public static void main(String[] args) {
         launch(args);
     }
+
+    //Add Button Clicked
+    private void addButtonClicked(){
+        Product product = new Product();
+        product.setName(nameInput.getText());
+        product.setPrice(Double.parseDouble(priceInput.getText()));
+        product.setQuantity(Integer.parseInt(quantityInput.getText()));
+        table.getItems().add(product);
+
+        //Clear up all the enter field
+        nameInput.clear();
+        priceInput.clear();
+        quantityInput.clear();
+    }
+
+    //Delete Button Clicked
+    private void deleteButtonClicked(){
+        ObservableList<Product> productSelected, allProducts;
+        allProducts = table.getItems();
+        productSelected = table.getSelectionModel().getSelectedItems();
+
+        //Short-hand version
+        productSelected.forEach(allProducts::remove);
+    }
+
+
     //Get all of the products
     public ObservableList<Product> getProduct(){
         ObservableList<Product> products = FXCollections.observableArrayList();

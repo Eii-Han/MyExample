@@ -80,6 +80,7 @@ public class TableViewT18 extends Application{
 
         //To-DO: Please create Layout
         Scene scene = new Scene(vBox);
+        scene.getStylesheets().add("Style.css");
         window.setScene(scene);
         window.show();
     }

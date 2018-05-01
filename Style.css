@@ -1,0 +1,7 @@
+.root {
+    -fx-background-color: linear-gradient(blue, red);
+}
+
+.tableview {
+    -fx-background-color: yellow;
+}
